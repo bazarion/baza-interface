@@ -5,9 +5,9 @@
                 <b-img :src="require('../assets/images/logo.svg')"></b-img>
             </b-navbar-brand>
                 <b-navbar-nav class="ml-auto">
-                    <b-nav-item class="w-nav" right>
+                    <b-nav-item class="w-nav multi-network" right>
                         <b-card-img class="mr-1" style="width: 22px;" :src="logoURI || require('../assets/images/nologo.svg')" alt="Image"></b-card-img>
-                        {{ networkName }}
+                        <span class="network-name">{{ networkName }}</span>
                     </b-nav-item>
                     <b-nav-item class="w-nav native-balance" right v-if="!isConnect && account">                        
                         {{ utils.bigToCommon(balance, 18) }} {{ symbol }}

@@ -38,12 +38,12 @@
                             </svg>
                         </a>
                     </li>
-                    <li id="my-nft">
+                    <li id="my-nft" v-if="!isConnect">
                         <a @click="$bvModal.show('your-nft')">
                         <b-icon-person-circle></b-icon-person-circle> Your NFTs
                         </a>
                     </li>
-                    <li>
+                    <li v-if="!isConnect">
                         <a style="cursor: pointer" @click="$bvModal.show('liquidity')">
                         <b-icon-droplet></b-icon-droplet> Liquidity
                         </a>
