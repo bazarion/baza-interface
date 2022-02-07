@@ -1,0 +1,64 @@
+{
+  "name": "@bazarion/interface",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "author": "",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "@bazarion/sdk": "^1.0.3",
+    "axios": "^0.21.3",
+    "core-js": "^3.6.5",
+    "ethers": "^5.4.5",
+    "store": "^2.0.12",
+    "url-join": "^4.0.1",
+    "vue": "^2.6.14",
+    "vue-clipboard2": "^0.3.3",
+    "vue-router": "^3.5.2",
+    "vue3-jazzicon": "^0.1.2",
+    "vuex": "^3.6.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "babel-eslint": "^10.1.0",
+    "bootstrap-vue": "^2.21.2",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "frontmatter-markdown-loader": "^3.6.3",
+    "popper.js": "^1.16.1",
+    "portal-vue": "^2.1.7",
+    "sass": "^1.43.2",
+    "sass-loader": "^10.2.0",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "_id": "baza-interface@1.0.0",
+  "license": "MIT",
+  "readme": "ERROR: No README data found!"
+}

@@ -1,0 +1,168 @@
+{
+    "name":"bazarion",
+    "timestamp":"2021-12-05T18:24:17+00:00",
+    "version": {
+        "major": 137, "minor": 0, "patch":0
+    },
+    "keywords": [
+        "bazarion",
+        "default",
+        "list"
+    ],
+    "tokens": [
+        {
+            "address": "0x975EaB99E97Ed812d159681D37aeec0E181E0C53",
+            "chainId": 88,
+            "name": "TomoPunksNFT",
+            "symbol": "TOMOPUNK",
+            "decimals": 0,
+            "standard": "ERC721",
+            "logoURI": "https://raw.githubusercontent.com/bazarion/assets/main/chains/tomochain/tokens/ERC721/0x975EaB99E97Ed812d159681D37aeec0E181E0C53/logo.png",
+            "links": {
+                "website": "https://www.tomopunksnft.com/",
+                "twitter": "https://twitter.com/tomopunksnft"
+            }
+        },
+        {
+            "address": "0xf697F0fe68f9D1e5AdcaDF723b232eBd601e59b0",
+            "chainId": 88,
+            "name": "TomoPunks",
+            "symbol": "TPNKS",
+            "decimals": 0,
+            "standard": "ERC721",
+            "logoURI": "https://github.com/bazarion/assets/raw/main/chains/tomochain/tokens/ERC721/0xf697F0fe68f9D1e5AdcaDF723b232eBd601e59b0/logo.png",
+            "links": {
+                "website": "https://tomopunks.io/",
+                "twitter": "https://twitter.com/tomo_punks"
+            },
+            "description": "The data for each TomoPunk is stored entirely on the TomoChain Blockchain. This includes the image of the TomoPunk and its metadata."
+        },
+        {
+            "address": "0xB1f66997A5760428D3a87D68b90BfE0aE64121cC",
+            "chainId": 88,
+            "name": "TomoChain",
+            "symbol": "TOMO",
+            "decimals": 18,
+            "standard": "ERC20",
+            "logoURI": "https://github.com/bazarion/assets/raw/main/chains/tomochain/logo.png"
+        },
+        {
+            "address": "0x0f79657e61fe20f0bF4015C427705A57D9ae5EDc",
+            "chainId": 89,
+            "name": "TomoChain",
+            "symbol": "TOMO",
+            "decimals": 18,
+            "standard": "ERC20",
+            "logoURI": "https://github.com/bazarion/assets/raw/main/chains/tomochain/logo.png"
+        },
+        {
+            "address": "0x19c46d416944e4fEc86Fd6d447d8E892FF92DA1E",
+            "chainId": 89,
+            "name": "Bazarion",
+            "symbol": "BAZA",
+            "decimals": 18,
+            "standard": "ERC20"
+        },
+        {
+            "address": "0xd421e4FF6de5226A135A1a6C44067e6d0bD08e34",
+            "chainId": 89,
+            "name": "BazaPet",
+            "symbol": "BAZAPET",
+            "decimals": 0,
+            "standard": "ERC721",
+            "logoURI": "https://lh3.googleusercontent.com/33njWxloRLzQGYfp9RfvpsWN8C1rcYaSZLi3KOZ8vQGPVGLGralkctsdYKjY3yNpfeHKtwnPcG-bFTXSOsiSuJ0vLUYX1kLH5HTjyg=w189",
+            "links": {
+                "twitter": "https://twitter.com/tomopunksnft"
+            }
+        },
+        {
+            "address": "0xA499890306CebA2b92De82b8eeeD51F5876b3Cbc",
+            "chainId": 89,
+            "name": "Kuni Saru",
+            "symbol": "SARU",
+            "decimals": 0,
+            "standard": "ERC721",
+            "logoURI": "https://pbs.twimg.com/profile_images/1468235053947920384/TXWvW9wk_400x400.jpg",
+            "links": {
+                "twitter": "https://twitter.com/AMAKUNIcom"
+            }
+        },
+        {
+            "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+            "chainId": 56,
+            "name": "Binance Smart Chain",
+            "symbol": "BNB",
+            "decimals": 18,
+            "standard": "ERC20",
+            "logoURI": "https://github.com/bazarion/assets/raw/main/chains/binancesmartchain/logo.png"
+        },
+        {
+            "address": "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
+            "chainId": 56,
+            "name": "Binance-Peg BUSD",
+            "symbol": "BUSD",
+            "decimals": 18,
+            "standard": "ERC20",
+            "logoURI": "https://github.com/bazarion/assets/raw/main/chains/binancesmartchain/ERC20/0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56/logo.png"
+        },
+        {
+            "address": "0x3da8410e6EF658c06E277a2769816688c37496CF",
+            "chainId": 56,
+            "name": "BornBadGirls",
+            "symbol": "BBG",
+            "decimals": 0,
+            "standard": "ERC721",
+            "logoURI": "https://github.com/bazarion/assets/raw/main/chains/binancesmartchain/ERC721/0x3da8410e6EF658c06E277a2769816688c37496CF/logo.png"
+        },
+        {
+            "address": "0x2999B189A6b06081c58bC4dA898C38089C4ad13A",
+            "chainId": 42220,
+            "name": "Celo",
+            "symbol": "CELO",
+            "decimals": 18,
+            "standard": "ERC20",
+            "logoURI": "https://raw.githubusercontent.com/bazarion/assets/main/chains/celo/logo.png"
+        },
+        {
+            "address": "0x9f46B8290A6D41B28dA037aDE0C3eBe24a5D1160",
+            "chainId": 42220,
+            "name": "CeloPunks",
+            "symbol": "CPUNK",
+            "decimals": 0,
+            "standard": "ERC721",
+            "logoURI": "https://raw.githubusercontent.com/bazarion/assets/main/chains/celo/tokens/ERC721/0x9f46B8290A6D41B28dA037aDE0C3eBe24a5D1160/logo.png"
+        },
+        {
+            "address": "0x0BE9e53fd7EDaC9F859882AfdDa116645287C629",
+            "chainId": 122,
+            "name": "Fuse Network",
+            "symbol": "FUSE",
+            "decimals": 18,
+            "standard": "ERC20",
+            "logoURI": "https://raw.githubusercontent.com/bazarion/assets/main/chains/fuse/tokens/ERC20/0x0BE9e53fd7EDaC9F859882AfdDa116645287C629/logo.png"
+        },
+        {
+            "address": "0x32319834d90323127988E4e2DC7b2162d4262904",
+            "chainId": 122,
+            "name": "Cozy Cosmonauts",
+            "symbol": "COZY",
+            "decimals": 0,
+            "standard": "ERC721",
+            "logoURI": "https://raw.githubusercontent.com/bazarion/assets/main/chains/fuse/tokens/ERC721/0x32319834d90323127988E4e2DC7b2162d4262904/logo.png"
+        },
+        {
+            "address": "0x080520C8B95e4bbfc55Aada2a362575433E56533",
+            "chainId": 122,
+            "name": "FusePunks",
+            "symbol": "PUNK",
+            "decimals": 0,
+            "standard": "ERC721",
+            "logoURI": "https://github.com/bazarion/assets/raw/main/chains/tomochain/tokens/ERC721/0xf697F0fe68f9D1e5AdcaDF723b232eBd601e59b0/logo.png",
+            "links": {
+                "website": "https://fusepunks.io/",
+                "twitter": "https://twitter.com/FusePunks"
+            },
+            "description": "The data for each FusePunk is stored entirely on the Fuse Network. This includes the image of the FusePunk and its metadata."
+        }
+    ]
+}
