@@ -9,13 +9,13 @@ Clone this source code. Then downloading dependencies.
 npm install
 ```
 
-## Configuration.
+## Configuration
 Updating your market information (`ft`, `nft`) in the config file `src/config.js`.
 
 - `ft`: ERC20 token address
 - `nft`: NFT token address
 
-Note: Before updating the file, you have to list your market in [Bazarion](https://app.bazarion.org)
+Note: Before updating the file, you have to list your market in [Bazarion](https://app.bazarion.org).
 
 
 For example, with the config file below:
