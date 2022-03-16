@@ -28,10 +28,10 @@
             </div>
             <div class="owner-nft mt-4">
                 <b-tabs content-class="mt-4">
-                    <b-tab title="NFTs" active>
+                    <b-tab :title="`NFTs (${iNFT})`" active>
                         <div class="no-item" v-if="!loading && nfts.length === 0">
                             <b-card-img class="nologo" :src="require('../assets/images/nologo.svg')" alt="Image"></b-card-img>
-                            <b-card-text>User's NFTS will be shown here.</b-card-text>
+                            <b-card-text>Your NFTS will be shown here.</b-card-text>
                         </div>
                         <b-row class="is-multiline">
                             <b-col v-if="!loading && nfts.length > 0" class="is-flex">
@@ -45,6 +45,7 @@
                                         </b-card-body>
                                     </router-link>
                                 </b-card>
+                                <b-button class="btn-load-more mb-4" v-if="nfts.length < iNFT" @click="loadNFTs(nfts.length, nfts.length + limit)">Next <b-spinner v-if="loadingMore" small label="Small Spinner"></b-spinner></b-button>
                             </b-col>
                             <!-- Skeleton loading -->
                             <b-col v-if="loading" class="is-flex" style="margin-top: 20px">
@@ -60,10 +61,10 @@
                             <!-- End skeleton loading -->
                         </b-row>
                     </b-tab>
-                    <b-tab title="Asks">
+                    <b-tab :title="`Asks (${iAsk})`">
                         <div class="no-item" v-if="!loading && asks.length === 0">
                             <b-card-img class="nologo" :src="require('../assets/images/nologo.svg')" alt="Image"></b-card-img>
-                            <b-card-text>User's Asks will be shown here.</b-card-text>
+                            <b-card-text>Your Asks will be shown here.</b-card-text>
                         </div>
                         <b-row class="is-multiline">
                             <b-col v-if="!loading && asks.length > 0" class="is-flex">
@@ -77,6 +78,7 @@
                                         </b-card-body>
                                     </router-link>
                                 </b-card>
+                                <b-button class="btn-load-more mb-4" v-if="asks.length < iAsk" @click="loadAsks(asks.length, asks.length + limit)">Next <b-spinner v-if="loadingMore" small label="Small Spinner"></b-spinner></b-button>
                             </b-col>
                             <!-- Skeleton loading -->
                             <b-col v-if="loading" class="is-flex" style="margin-top: 20px">
@@ -92,10 +94,10 @@
                             <!-- End skeleton loading -->
                         </b-row>
                     </b-tab>
-                    <b-tab title="Bids">
+                    <b-tab :title="`Bids (${iBid})`">
                         <div class="no-item" v-if="!loading && bids.length === 0">
                             <b-card-img class="nologo" :src="require('../assets/images/nologo.svg')" alt="Image"></b-card-img>
-                            <b-card-text>User's Bids will be shown here.</b-card-text>
+                            <b-card-text>Your Bids will be shown here.</b-card-text>
                         </div>
                         <b-row class="is-multiline">
                             <b-col v-if="!loading && bids.length > 0" class="is-flex">
@@ -109,6 +111,7 @@
                                         </b-card-body>
                                     </router-link>
                                 </b-card>
+                                <b-button class="btn-load-more mb-4" v-if="bids.length < iBid" @click="loadBids(bids.length, bids.length + limit)">Next <b-spinner v-if="loadingMore" small label="Small Spinner"></b-spinner></b-button>
                             </b-col>
                             <!-- Skeleton loading -->
                             <b-col v-if="loading" class="is-flex" style="margin-top: 20px">
@@ -144,8 +147,13 @@ export default {
         bids: [],
         nfts: [],
         loading: true,
+        loadingMore: false,
         isCopy: false,
-        isPixelated: false
+        isPixelated: false,
+        limit: 12,
+        iAsk: 0,
+        iBid: 0,
+        iNFT: 0
     }),
     props: ['ftLink', 'nftAddress', 'ftSymbol', 'nftSymbol'],
     updated: async function () {
@@ -170,51 +178,70 @@ export default {
 
         this.account = this.address
 
-        let iAsk = await this.market.askBalanceOf(this.address)
-        let iBid = await this.market.bidBalanceOf(this.address)
+        this.iAsk = (await this.market.askBalanceOf(this.address)).toNumber()
+        this.iBid = (await this.market.bidBalanceOf(this.address)).toNumber()
         let nft = new NFT(this.nft, this.provider)
-        let iNFT = await nft.balanceOf(this.address)
+        this.iNFT = (await nft.balanceOf(this.address)).toNumber()
 
-        let calls = await Multicall.setMulticall(this.ft, this.nft, this.provider)
-        let asks = await calls.askOfOwnerByIndex(this.address, iAsk.toNumber())
-        asks.forEach(async (tokenId) => {
-            let uri = await this.market.tokenURI(tokenId)
-            try {
-                let { data } = await axios.get(this.utils.nftIpfsLink(uri))
-                data.tokenId = tokenId.toString()
-                this.asks.push(data)
-            } catch(e) {
-                /* eslint no-empty: ["error", { "allowEmptyCatch": true }] */
-            }
-        })
+        this.loadAsks(0, (this.iAsk > this.limit) ? this.limit : this.iAsk)
 
-        let bids = await calls.bidOfOwnerByIndex(this.address, iBid.toNumber())
-        bids.forEach(async (tokenId) => {
-            let uri = await this.market.tokenURI(tokenId)
-            try {
-                let { data } = await axios.get(this.utils.nftIpfsLink(uri))
-                data.tokenId = tokenId.toString()
-                this.bids.push(data)
-            } catch(e) {
-                /* eslint no-empty: ["error", { "allowEmptyCatch": true }] */
-            }
-        })
+        this.loadBids(0, (this.iBid > this.limit) ? this.limit : this.iBids)
 
-        let nfts = await calls.nftOfOwnerByIndex(this.address, iNFT.toNumber())
-        nfts.forEach(async (tokenId) => {
-            let uri = await this.market.tokenURI(tokenId)
-            try {
-                let { data } = await axios.get(this.utils.nftIpfsLink(uri))
-                data.tokenId = tokenId.toString()
-                this.nfts.push(data)
-            } catch(e) {
-                /* eslint no-empty: ["error", { "allowEmptyCatch": true }] */
-            }
-        })
+        await this.loadNFTs(0, (this.iNFT > this.limit) ? this.limit : this.iNFT)
+
         this.loading = false
 
     }, 
     methods: {
+        loadNFTs: async function (from, to) {
+            this.loadingMore = true
+            let calls = await Multicall.setMulticall(this.ft, this.nft, this.provider)
+            let nfts = await calls.nftOfOwnerByIndex(this.address, from, to)
+            nfts.forEach(async (tokenId) => {
+                let uri = await this.market.tokenURI(tokenId)
+                try {
+                    let { data } = await axios.get(this.utils.nftIpfsLink(uri))
+                    data.tokenId = tokenId.toString()
+                    this.nfts.push(data)
+                } catch(e) {
+                    /* eslint no-empty: ["error", { "allowEmptyCatch": true }] */
+                }
+            })
+            this.loadingMore = false
+        },
+        loadBids: async function (from, to) {
+            this.loadingMore = true
+            let calls = await Multicall.setMulticall(this.ft, this.nft, this.provider)
+            let bids = await calls.bidOfOwnerByIndex(this.address, from, to)
+            bids.forEach(async (tokenId) => {
+                let uri = await this.market.tokenURI(tokenId)
+                try {
+                    let { data } = await axios.get(this.utils.nftIpfsLink(uri))
+                    data.tokenId = tokenId.toString()
+                    this.bids.push(data)
+                } catch(e) {
+                    /* eslint no-empty: ["error", { "allowEmptyCatch": true }] */
+                }
+            })
+            this.loadingMore = false
+
+        },
+        loadAsks: async function (from, to) {
+            this.loadingMore = true
+            let calls = await Multicall.setMulticall(this.ft, this.nft, this.provider)
+            let asks = await calls.askOfOwnerByIndex(this.address, from, to)
+            asks.forEach(async (tokenId) => {
+                let uri = await this.market.tokenURI(tokenId)
+                try {
+                    let { data } = await axios.get(this.utils.nftIpfsLink(uri))
+                    data.tokenId = tokenId.toString()
+                    this.asks.push(data)
+                } catch(e) {
+                    /* eslint no-empty: ["error", { "allowEmptyCatch": true }] */
+                }
+            })
+            this.loadingMore = false
+        },
         onCopy: function () {
             this.isCopy = true
             setTimeout(()=>{
@@ -304,6 +331,13 @@ export default {
                 }
 
             }
+        }
+        .btn-load-more{
+            margin: 0 auto;
+            padding: 5px 10px;
+            border-radius: 8px;
+            color: #fff;
+            background-color: #9D22C1;
         }
         .nft-item{
             width: calc(25% - 20px);

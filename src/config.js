@@ -1,7 +1,7 @@
 const config = {
     apiBaseUrl: 'https://app.bazarion.org/',
     ft: 'TOMO',
-    nft: '0xf697F0fe68f9D1e5AdcaDF723b232eBd601e59b0',
-    chainId: 88
+    nft: '0xA499890306CebA2b92De82b8eeeD51F5876b3Cbc',
+    chainId: 89
 }
 export default config
