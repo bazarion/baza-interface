@@ -195,6 +195,7 @@ export default {
     methods: {
         loadNFTs: async function (from, to) {
             this.loadingMore = true
+            to = (to > this.iNFT) ? this.iNFT : to
             let calls = await Multicall.setMulticall(this.ft, this.nft, this.provider)
             let nfts = await calls.nftOfOwnerByIndex(this.address, from, to)
             nfts.forEach(async (tokenId) => {
@@ -211,6 +212,7 @@ export default {
         },
         loadBids: async function (from, to) {
             this.loadingMore = true
+            to = (to > this.iBid) ? this.iBid : to
             let calls = await Multicall.setMulticall(this.ft, this.nft, this.provider)
             let bids = await calls.bidOfOwnerByIndex(this.address, from, to)
             bids.forEach(async (tokenId) => {
@@ -228,6 +230,7 @@ export default {
         },
         loadAsks: async function (from, to) {
             this.loadingMore = true
+            to = (to > this.iAsk) ? this.iAsk : to
             let calls = await Multicall.setMulticall(this.ft, this.nft, this.provider)
             let asks = await calls.askOfOwnerByIndex(this.address, from, to)
             asks.forEach(async (tokenId) => {
