@@ -106,6 +106,15 @@
             "logoURI": "https://github.com/bazarion/assets/raw/main/chains/binancesmartchain/ERC20/0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56/logo.png"
         },
         {
+            "address": "0x5B3E2Bc1da86ff6235D9eAd4504d598caE77DBCB",
+            "chainId": 97,
+            "name": "Binance Smart Chain",
+            "symbol": "BNB",
+            "decimals": 18,
+            "standard": "ERC20",
+            "logoURI": "https://github.com/bazarion/assets/raw/main/chains/binancesmartchain/logo.png"
+        },
+        {
             "address": "0x3da8410e6EF658c06E277a2769816688c37496CF",
             "chainId": 56,
             "name": "BornBadGirls",
